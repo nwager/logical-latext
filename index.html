@@ -8,11 +8,13 @@
 <body>
   <h1>Type pseudo-English logic to convert to LaTex</h1>
   <p>
-    This is a paragraph.
-    Note that the text is automatically wrapped.
+    Use parentheses and English words.
   </p>
   <textarea id="logic" name="logic" rows="10" cols="60"></textarea>
+  <button type="button" onclick="latexify()">LaTexify</button>
   <p>Here is your LaTex text</p>
   <textarea id="latex" name="latex" rows="10" cols="60"></textarea>
+
+  <script src="convert.js"></script>
 </body>
 </html>
