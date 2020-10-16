@@ -1,19 +1,17 @@
 <!DOCTYPE HTML>
 <html lang = "en">
 <head>
-  <!-- basic.html -->
-  <title>Logic to Latex Converter</title>
+  <title>Logic to LateX Converter</title>
   <meta charset = "UTF-8" />
 </head>
 <body>
-  <h1>Type pseudo-English logic to convert to LaTex</h1>
+  <h1>Type pseudo-English logic to convert to LaTeX</h1>
   <p>
     Use parentheses and English words.
   </p>
-  <textarea id="logic" name="logic" rows="10" cols="60"></textarea>
-  <button type="button" onclick="latexify()">LaTexify</button>
-  <p>Here is your LaTex text</p>
-  <textarea id="latex" name="latex" rows="10" cols="60"></textarea>
+  <textarea id="logic" name="logic" rows="20" cols="120" oninput="latexify()"></textarea></br>
+  <p>Here is your LaTeX text</p>
+  <textarea id="latex" name="latex" rows="20" cols="120"></textarea>
 
   <script src="convert.js"></script>
 </body>
