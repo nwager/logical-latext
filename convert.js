@@ -1,40 +1,42 @@
+'use strict'; 
+
 function getText() {
     return document.getElementById("logic").value;
 }
 
+const LatexDictionary = new Map([
+    ["not", "\\neg"],
+    ["and", "\\wedge"],
+    ["^", "\\wedge"],
+    ["or", "\\vee"],
+    ["v", "\\vee"],
+    ["implies", "\\rightarrow"],
+    ["->", "\\rightarrow"],
+    ["equiv",  "\\;\\equiv\\; &"],
+    ["===", "\\;\\equiv\\; &"],
+    ["<->", "\\iff"],
+    ["E", "\\exists"],
+    ["V", "\\forall"]
+]); 
+
+
 function latexify() {
-    var text;
-    var tokens = new Array();
+    let text;
+    let tokens = new Array();
     getText().split(" ").forEach(s => {
+        let nextToken;
+
         if (s != "" || s != " ") {
             s = s.includes("\n") ? s.replace("\n", "\\\\\n\\;\\equiv\\; & ") : s;
             s = s.includes("[") ? "&& ".concat("", s) : s;
             s = s.includes("!") ? s.replace("!", "\\neg ") : s;
-            switch(s) {
-                case "not":
-                    x = "\\neg";
-                    break;
-                case "and":
-                case "^":
-                    x = "\\wedge";
-                    break;
-                case "or":
-                case "v":
-                    x = "\\vee";
-                    break;
-                case "implies":
-                case "->":
-                    x = "\\rightarrow";
-                    break;
-                case "equiv":
-                case "===":
-                    x = "\\;\\equiv\\; &";
-                    break;
-                default:
-                    x = s;
-            }
+
+            // Use map as look-up table for respective latex code 
+            const latexCode = LatexDictionary.get(s);
+            nextToken = (latexCode) ? latexCode : s; 
+            
         }
-        tokens.push(x);
+        tokens.push(nextToken);
     });
     
     text = "\\begin{align*}\n".concat("", tokens[0]);
